@@ -3,7 +3,7 @@
 $html_description = 'Пекарня "Хлебушек". Звоните нам по телефону, чтобы сделать заказ на самовывоз.';
 $html_keywords = "Пекарня Хлебушек контакты, Пекарня Хлебушек заказать, Пекарня Хлебушек телефон";
 $html_title = 'О нас';
-
+//ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ
 // Импортировать <head> страницы из PHP файла
 include("blocks/head.php");
 ?>
