@@ -96,6 +96,7 @@ switch ($action) {
 				} else {
 					echo json_encode("Error: " . mysqli_error($db));
 				}
+				break;
 
 	case 5: 
 		$product_id = $_REQUEST['product_id'];
