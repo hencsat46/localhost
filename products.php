@@ -80,17 +80,18 @@ include("blocks/head.php");
                                     
                                     // Пока из результата не прочитаны все продукты
                                     while($product = mysqli_fetch_array($result)) {
-                                        if ($product[visibility] == 0)
-                                            continue
-                                        // Вывести продукт
-                                        print <<<HERE
-                                        <h2 align="center"> $product[name] </h2>
-                                        <p align="center">
-                                            <img src="$product[img]" width="100%">
-                                        </p>                                  
-                                        <p> $product[description] </p>  
-                                        <p> <b>Цена:</b> $product[price] р.</p>
-                                        HERE;
+                                        if ($product[visibility] == 1) {
+                                            // Вывести продукт
+                                            print <<<HERE
+                                            <h2 align="center"> $product[name] </h2>
+                                            <p align="center">
+                                                <img src="$product[img]" width="100%">
+                                            </p>                                  
+                                            <p> $product[description] </p>  
+                                            <p> <b>Цена:</b> $product[price] р.</p>
+                                            HERE;
+                                        }
+                                            
                                     }
                                 }
 
