@@ -147,6 +147,7 @@ $(document).ready(function(){
                     url: "scripts/ajax_addc.php", // страница обработчика
                     data: $(this).serialize(),
                     success: function(response)  {
+                                console.log(response)
                                response = JSON.parse(response);
                                $('.response').show();
 							   $('.response').html("<h2>Добавлена информация</h2>");

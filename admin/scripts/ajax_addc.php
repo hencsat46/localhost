@@ -89,7 +89,7 @@ switch ($action) {
 						'img' => $product_img,
 						'description' => $product_description,
 						'price' => $product_price,
-						'visibility' => $visibility // Конвертируем обратно в bool для вывода
+						'visibility' => $visibility,
 					);
 					echo json_encode($result);
 					file_put_contents('info.json', json_encode($result)); // Записываем в файл JSON (это может быть вашими дополнительными действиями)
