@@ -72,6 +72,10 @@ include("blocks/head.php");
                             <input type="number" name="product_price" id="product_price">
 
                             <br><br>
+                            Видимость <br>
+                            <input type="checkbox" name="visibility" id="visibility">
+
+                            <br><br>
                             <input type="submit" value="Создать">
                             <br><br>
                         </form>

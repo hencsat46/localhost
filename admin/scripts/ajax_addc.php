@@ -76,24 +76,26 @@ switch ($action) {
 				$product_img = $_REQUEST['product_img'];
 				$product_description = $_REQUEST['product_description'];
 				$product_price = $_REQUEST['product_price'];
-			
+				$visibility = isset($_REQUEST['visibility']) ? 1 : 0;
 				// Добавление данных в бд
-				$insertResult = mysqli_query($db, "INSERT INTO products(category_id, name, img, description, price) VALUES ('$category_id', '$product_name', '$product_img', '$product_description', '$product_price')");
-			
-				// Успешное добавление
-				if ($insertResult){
-							$result = array();
-							$result['category_name'] = $category['name'];
-							$result['name'] = $_REQUEST['product_name'];
-							$result['img'] = $_REQUEST['product_img'];
-							$result['description'] = $_REQUEST['product_description'];
-							$result['price'] = $_REQUEST['product_price'];
-							echo json_encode($result);
-							file_put_contents('info.json',json_encode($result));
-						}
-						else
-							echo json_encode("Error"); 	
-						break;
+				$insertResult = mysqli_query($db, "INSERT INTO products(category_id, name, img, description, price, visibility) 
+                VALUES ('$category_id', '$product_name', '$product_img', '$product_description', '$product_price', '$visibility')");
+
+// Проверяем успешность вставки
+				if ($insertResult) {
+					$result = array(
+						'category_id' => $category_id,
+						'name' => $product_name,
+						'img' => $product_img,
+						'description' => $product_description,
+						'price' => $product_price,
+						'visibility' => (bool) $visibility // Конвертируем обратно в bool для вывода
+					);
+					echo json_encode($result);
+					file_put_contents('info.json', json_encode($result)); // Записываем в файл JSON (это может быть вашими дополнительными действиями)
+				} else {
+					echo json_encode("Error: " . mysqli_error($db));
+				}
 
 	case 5: 
 		$product_id = $_REQUEST['product_id'];
