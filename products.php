@@ -76,10 +76,12 @@ include("blocks/head.php");
                                 // Если в результате есть строка с найденной категорией вывести выпечку из категории
                                 if ($category = mysqli_fetch_array($result)) {
                                     // Запросить из бд
-                                    $result = mysqli_query($db, "SELECT id, name, img, description, price FROM products WHERE category_id = $category_id"); 
+                                    $result = mysqli_query($db, "SELECT id, name, img, description, price, visibility FROM products WHERE category_id = $category_id"); 
                                     
                                     // Пока из результата не прочитаны все продукты
                                     while($product = mysqli_fetch_array($result)) {
+                                        if ($product[visibility] == 0)
+                                            continue
                                         // Вывести продукт
                                         print <<<HERE
                                         <h2 align="center"> $product[name] </h2>
