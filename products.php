@@ -80,7 +80,7 @@ include("blocks/head.php");
                                     
                                     // Пока из результата не прочитаны все продукты
                                     while($product = mysqli_fetch_array($result)) {
-                                        if ($product[visibility] == 1) {
+                                        if ($product['visibility'] == 1) {
                                             // Вывести продукт
                                             print <<<HERE
                                             <h2 align="center"> $product[name] </h2>
